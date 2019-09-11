@@ -102,9 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.send),
               label: Text("发送"),
               onPressed: () async {
-                await Navigator.push(context, MaterialPageRoute(builder: (context) {
+                var result  = await Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return NewRoute(msg:"卧槽");
                 }));
+                print("$result");
               },
             ),
           ],
@@ -130,11 +131,22 @@ class NewRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("传值"),
+        title: Text("pass parameters"),
       ),
-      body: Center(
-        child: Text(msg),
-      ),
+      body: Padding(
+        padding: EdgeInsets.all(18),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(msg),
+              RaisedButton(
+                onPressed: ()=>Navigator.pop(context, "I am returned value"),
+                child: Text("go back"),
+              )
+            ],
+          ),
+        ),
+      )
     );
   }
 }
