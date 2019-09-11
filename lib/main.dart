@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      initialRoute:"/",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "about":(context)=>AboutRoute(),
+        "/":(context)=> MyHomePage(title: 'Flutter Demo Home Page'),
+      },
+//      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -98,6 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+        RaisedButton.icon(
+          icon: Icon(Icons.send),
+          label: Text("关于"),
+          onPressed: () {
+            Navigator.pushNamed(context, "about");
+          },
+        ),
             RaisedButton.icon(
               icon: Icon(Icons.send),
               label: Text("发送"),
@@ -120,6 +132,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class AboutRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("关于我们"),
+      ),
+      body: Center(
+        child: Text("智能 智造 智管"),
+      ),
+    );
+  }
+
+}
 class NewRoute extends StatelessWidget {
   NewRoute({
     Key key,
