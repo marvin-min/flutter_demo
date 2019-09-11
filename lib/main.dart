@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      initialRoute:"/",
+      initialRoute: "/",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "about":(context)=>AboutRoute(),
-        "/":(context)=> MyHomePage(title: 'Flutter Demo Home Page'),
+        "about": (context) => AboutRoute(),
+        "newpage": (context) {
+          return NewRoute(msg: ModalRoute.of(context).settings.arguments);
+        },
+        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
       },
 //      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -103,21 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-        RaisedButton.icon(
-          icon: Icon(Icons.send),
-          label: Text("关于"),
-          onPressed: () {
-            Navigator.pushNamed(context, "about");
-          },
-        ),
+            RaisedButton.icon(
+              icon: Icon(Icons.send),
+              label: Text("关于"),
+              onPressed: () {
+                Navigator.pushNamed(context, "about");
+              },
+            ),
             RaisedButton.icon(
               icon: Icon(Icons.send),
               label: Text("发送"),
               onPressed: () async {
-                var result  = await Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewRoute(msg:"卧槽");
-                }));
-                print("$result");
+//                var result  = await Navigator.push(context, MaterialPageRoute(builder: (context) {
+//                  return NewRoute(msg:"卧槽");
+//                }));
+//                print("$result");
+                Navigator.of(context).pushNamed("newpage", arguments: "Hi, Named routes");
               },
             ),
           ],
@@ -135,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class AboutRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+    var args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("关于我们"),
@@ -145,8 +149,8 @@ class AboutRoute extends StatelessWidget {
       ),
     );
   }
-
 }
+
 class NewRoute extends StatelessWidget {
   NewRoute({
     Key key,
@@ -156,24 +160,25 @@ class NewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var msg = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("pass parameters"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(18),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Text(msg),
-              RaisedButton(
-                onPressed: ()=>Navigator.pop(context, "I am returned value"),
-                child: Text("go back"),
-              )
-            ],
-          ),
+        appBar: AppBar(
+          title: Text("pass parameters"),
         ),
-      )
-    );
+        body: Padding(
+          padding: EdgeInsets.all(18),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Text(msg),
+                RaisedButton(
+                  onPressed: () =>
+                      Navigator.pop(context, "I am returned value"),
+                  child: Text("go back"),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }
