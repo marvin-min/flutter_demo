@@ -21,8 +21,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(builder: (context) {
+          String routeName = settings.name;
+          print(routeName);
+          return LoginRoute();
+        });
+      },
       routes: {
         "about": (context) => AboutRoute(),
+//        "login":(context)=>LoginRoute(),
         "newpage": (context) {
           return NewRoute(msg: ModalRoute.of(context).settings.arguments);
         },
@@ -114,6 +122,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RaisedButton.icon(
+              icon: Icon(Icons.add_box),
+              label: Text("登陆"),
+              onPressed: () {
+                Navigator.pushNamed(context, "login");
+              },
+            ),
+            RaisedButton.icon(
               icon: Icon(Icons.send),
               label: Text("发送"),
               onPressed: () async {
@@ -121,7 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
 //                  return NewRoute(msg:"卧槽");
 //                }));
 //                print("$result");
-                Navigator.of(context).pushNamed("newpage", arguments: "Hi, Named routes");
+                Navigator.of(context)
+                    .pushNamed("newpage", arguments: "Hi, Named routes");
               },
             ),
           ],
@@ -146,6 +162,17 @@ class AboutRoute extends StatelessWidget {
       ),
       body: Center(
         child: Text("智能 智造 智管"),
+      ),
+    );
+  }
+}
+
+class LoginRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("Loing Page"),
       ),
     );
   }
