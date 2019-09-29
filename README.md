@@ -17,4 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 
 
 #到了注册路由表部分
-https://book.flutterchina.club/chapter2/flutter_router.html
+https://book.flutterchina.club/chapter2/flutter_package_mgr.html
