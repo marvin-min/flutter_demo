@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -170,7 +171,12 @@ class AboutRoute extends StatelessWidget {
         title: Text("关于我们"),
       ),
       body: Center(
-        child: Text("智能 智造 智管"),
+        child: Column(
+            children: <Widget>[
+             Image.asset('assets/images/1.png'),
+              Text("关于我们")
+        ]
+        )
       ),
     );
   }
@@ -179,9 +185,13 @@ class AboutRoute extends StatelessWidget {
 class LoginRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final wordPair = new WordPair.random();
     return Scaffold(
       body: Center(
-        child: Text("Loing Page"),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(wordPair.toString()),
+        )
       ),
     );
   }
@@ -206,6 +216,7 @@ class NewRoute extends StatelessWidget {
           child: Center(
             child: Column(
               children: <Widget>[
+                Image.asset('assets/images/2.jpeg',),
                 Text(msg),
                 RaisedButton(
                   onPressed: () =>
