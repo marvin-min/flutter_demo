@@ -111,6 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
+              '-----|-----',
+            ),
+            Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
@@ -118,7 +121,12 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.send),
               label: Text("关于"),
               onPressed: () {
-                Navigator.pushNamed(context, "about");
+//                Navigator.pushNamed(context, "about");
+               Navigator.push(context, MaterialPageRoute(
+                 builder: (context){
+                   return new AboutRoute();
+                 },fullscreenDialog:false
+               ));
               },
             ),
             RaisedButton.icon(
@@ -136,8 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
 //                  return NewRoute(msg:"卧槽");
 //                }));
 //                print("$result");
-                Navigator.of(context)
+                var result = await  Navigator.of(context)
                     .pushNamed("newpage", arguments: "Hi, Named routes");
+                print("$result");
               },
             ),
           ],
