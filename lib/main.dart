@@ -118,16 +118,18 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            RaisedButton.icon(
+            OutlineButton.icon(
               icon: Icon(Icons.send),
               label: Text("关于"),
               onPressed: () {
 //                Navigator.pushNamed(context, "about");
-               Navigator.push(context, MaterialPageRoute(
-                 builder: (context){
-                   return new AboutRoute();
-                 },fullscreenDialog:false
-               ));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) {
+                          return new AboutRoute();
+                        },
+                        fullscreenDialog: false));
               },
             ),
             RaisedButton.icon(
@@ -137,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, "login");
               },
             ),
-            RaisedButton.icon(
+            FlatButton.icon(
               icon: Icon(Icons.send),
               label: Text("发送"),
               onPressed: () async {
@@ -145,11 +147,17 @@ class _MyHomePageState extends State<MyHomePage> {
 //                  return NewRoute(msg:"卧槽");
 //                }));
 //                print("$result");
-                var result = await  Navigator.of(context)
-                    .pushNamed("newpage", arguments: "Hi, Named routes");
+                var result = await Navigator.of(context)
+                    .pushNamed("newpage", arguments: "Hi, Named routes."*10);
                 print("$result");
               },
             ),
+            IconButton(
+              icon: Icon(Icons.thumb_up),
+              onPressed: (){
+                print("点赞");
+              },
+            )
           ],
         ),
       ),
@@ -165,19 +173,28 @@ class _MyHomePageState extends State<MyHomePage> {
 class AboutRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("关于我们"),
       ),
       body: Center(
-        child: Column(
-            children: <Widget>[
-             Image.asset('assets/images/1.png'),
-              Text("关于我们")
-        ]
-        )
-      ),
+          child: Column(children: <Widget>[
+        Image.asset('assets/images/1.png'),
+            Text.rich(TextSpan(
+                children: [
+                  TextSpan(
+                      text: "Home: "
+                  ),
+                  TextSpan(
+                      text: "https://flutterchina.club",
+                      style: TextStyle(
+                          color: Colors.blue
+                      ),
+//                      recognizer: _tapRecognizer
+                  ),
+                ]
+            ))
+      ])),
     );
   }
 }
@@ -188,11 +205,10 @@ class LoginRoute extends StatelessWidget {
     final wordPair = new WordPair.random();
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(wordPair.toString()),
-        )
-      ),
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(wordPair.toString()),
+      )),
     );
   }
 }
@@ -216,8 +232,20 @@ class NewRoute extends StatelessWidget {
           child: Center(
             child: Column(
               children: <Widget>[
-                Image.asset('assets/images/2.jpeg',),
-                Text(msg),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Text(
+                 msg,
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 18.0,
+                      height: 1.2,
+                      fontFamily: "Courier",
+                      background: new Paint()..color = Colors.yellow,
+                      decoration: TextDecoration.underline,
+                      decorationStyle: TextDecorationStyle.dashed),
+                ),
                 RaisedButton(
                   onPressed: () =>
                       Navigator.pop(context, "I am returned value"),
