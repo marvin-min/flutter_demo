@@ -33,10 +33,7 @@ class MyApp extends StatelessWidget {
         "about": (context) => AboutRoute(),
 //        "login":(context)=>LoginRoute(),
         "newpage": (context) {
-          return NewRoute(msg: ModalRoute
-              .of(context)
-              .settings
-              .arguments);
+          return NewRoute(msg: ModalRoute.of(context).settings.arguments);
         },
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
       },
@@ -113,15 +110,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Image.network(
               "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4",
-              width: 500.0,
+              width: 100.0,
               fit: BoxFit.fitHeight,
               color: Colors.red,
               colorBlendMode: BlendMode.difference,
             ),
-            Image(
-                image: AssetImage("assets/images/2.jpeg"),
-                width: 100.0
-            ),
+            Image(image: AssetImage("assets/images/2.jpeg"), width: 100.0),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -130,18 +124,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .display1,
+              style: Theme.of(context).textTheme.display1,
             ),
             OutlineButton.icon(
               icon: Icon(Icons.send),
-              label: Text("\uE914关于",style: TextStyle(
-                  fontFamily: "MaterialIcons",
-                  fontSize: 24.0,
-                  color: Colors.green
-              ),),
+              label: Text(
+                "\uE914关于",
+                style: TextStyle(
+                    fontFamily: "MaterialIcons",
+                    fontSize: 24.0,
+                    color: Colors.green),
+              ),
               onPressed: () {
 //                Navigator.pushNamed(context, "about");
                 Navigator.push(
@@ -155,22 +148,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton.icon(
               icon: Icon(Icons.add_box),
-              label: Text(" \uE90D 登陆",style: TextStyle(
-                  fontFamily: "MaterialIcons",
-                  fontSize: 24.0,
-                  color: Colors.red
-              )),
+              label: Text(" \uE90D 登陆",
+                  style: TextStyle(
+                      fontFamily: "MaterialIcons",
+                      fontSize: 24.0,
+                      color: Colors.red)),
               onPressed: () {
                 Navigator.pushNamed(context, "login");
               },
             ),
             FlatButton.icon(
               icon: Icon(Icons.send),
-              label: Text("\uE000 发送", style:TextStyle(
-                  fontFamily: "MaterialIcons",
-                  fontSize: 24.0,
-                  color: Colors.blue
-              )),
+              label: Text("\uE000 发送",
+                  style: TextStyle(
+                      fontFamily: "MaterialIcons",
+                      fontSize: 24.0,
+                      color: Colors.blue)),
               onPressed: () async {
 //                var result  = await Navigator.push(context, MaterialPageRoute(builder: (context) {
 //                  return NewRoute(msg:"卧槽");
@@ -187,7 +180,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("点赞");
               },
             ),
-
           ],
         ),
       ),
@@ -209,36 +201,66 @@ class AboutRoute extends StatelessWidget {
       ),
       body: Center(
           child: Column(children: <Widget>[
-            Image.asset('assets/images/1.png'),
-            Text.rich(TextSpan(
-                children: [
-                  TextSpan(
-                      text: "Home: "
-                  ),
-                  TextSpan(
-                    text: "https://flutterchina.club",
-                    style: TextStyle(
-                        color: Colors.blue
-                    ),
+        Image.asset('assets/images/1.png'),
+        Text.rich(TextSpan(children: [
+          TextSpan(text: "Home: "),
+          TextSpan(
+            text: "https://flutterchina.club",
+            style: TextStyle(color: Colors.blue),
 //                      recognizer: _tapRecognizer
-                  ),
-                ]
-            ))
-          ])),
+          ),
+        ]))
+      ])),
     );
   }
 }
 
 class LoginRoute extends StatelessWidget {
+  TextEditingController _unameController = TextEditingController();
+
+  @override
+  void initState() {
+    //监听输入改变
+    _unameController.addListener((){
+      print(_unameController.text);
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    final wordPair = new WordPair.random();
     return Scaffold(
+      appBar: AppBar(
+        title: new Text('用户登录'),
+      ),
       body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(wordPair.toString()),
-          )),
+          child: Column(
+        children: <Widget>[
+          TextField(
+            autofocus: true,
+            controller: _unameController, //设置contr
+            onChanged: (v) {
+//              print("onChange: $v");
+            },
+
+            decoration: InputDecoration(
+              labelText: "用户名",
+              hintText: "用户名或邮箱",
+              prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+                labelText: "密码",
+                hintText: "您的登录密码",
+                prefixIcon: Icon(Icons.lock)),
+            obscureText: true,
+          ),
+          LinearProgressIndicator(
+            backgroundColor: Colors.grey[200],
+            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            value: .5,
+          )
+        ],
+      )),
     );
   }
 }
@@ -252,10 +274,7 @@ class NewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var msg = ModalRoute
-        .of(context)
-        .settings
-        .arguments;
+    var msg = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
           title: Text("pass parameters"),
@@ -275,8 +294,7 @@ class NewRoute extends StatelessWidget {
                       fontSize: 18.0,
                       height: 1.2,
                       fontFamily: "Courier",
-                      background: new Paint()
-                        ..color = Colors.yellow,
+                      background: new Paint()..color = Colors.yellow,
                       decoration: TextDecoration.underline,
                       decorationStyle: TextDecorationStyle.dashed),
                 ),
