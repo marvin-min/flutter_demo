@@ -137,7 +137,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             OutlineButton.icon(
               icon: Icon(Icons.send),
-              label: Text("关于"),
+              label: Text("\uE914关于",style: TextStyle(
+                  fontFamily: "MaterialIcons",
+                  fontSize: 24.0,
+                  color: Colors.green
+              ),),
               onPressed: () {
 //                Navigator.pushNamed(context, "about");
                 Navigator.push(
@@ -151,14 +155,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton.icon(
               icon: Icon(Icons.add_box),
-              label: Text("登陆"),
+              label: Text(" \uE90D 登陆",style: TextStyle(
+                  fontFamily: "MaterialIcons",
+                  fontSize: 24.0,
+                  color: Colors.red
+              )),
               onPressed: () {
                 Navigator.pushNamed(context, "login");
               },
             ),
             FlatButton.icon(
               icon: Icon(Icons.send),
-              label: Text("发送"),
+              label: Text("\uE000 发送", style:TextStyle(
+                  fontFamily: "MaterialIcons",
+                  fontSize: 24.0,
+                  color: Colors.blue
+              )),
               onPressed: () async {
 //                var result  = await Navigator.push(context, MaterialPageRoute(builder: (context) {
 //                  return NewRoute(msg:"卧槽");
@@ -174,7 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 print("点赞");
               },
-            )
+            ),
+
           ],
         ),
       ),
