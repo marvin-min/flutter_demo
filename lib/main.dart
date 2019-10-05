@@ -33,7 +33,10 @@ class MyApp extends StatelessWidget {
         "about": (context) => AboutRoute(),
 //        "login":(context)=>LoginRoute(),
         "newpage": (context) {
-          return NewRoute(msg: ModalRoute.of(context).settings.arguments);
+          return NewRoute(msg: ModalRoute
+              .of(context)
+              .settings
+              .arguments);
         },
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
       },
@@ -108,6 +111,17 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.network(
+              "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4",
+              width: 500.0,
+              fit: BoxFit.fitHeight,
+              color: Colors.red,
+              colorBlendMode: BlendMode.difference,
+            ),
+            Image(
+                image: AssetImage("assets/images/2.jpeg"),
+                width: 100.0
+            ),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -116,7 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .display1,
             ),
             OutlineButton.icon(
               icon: Icon(Icons.send),
@@ -148,13 +165,13 @@ class _MyHomePageState extends State<MyHomePage> {
 //                }));
 //                print("$result");
                 var result = await Navigator.of(context)
-                    .pushNamed("newpage", arguments: "Hi, Named routes."*10);
+                    .pushNamed("newpage", arguments: "Hi, Named routes." * 10);
                 print("$result");
               },
             ),
             IconButton(
               icon: Icon(Icons.thumb_up),
-              onPressed: (){
+              onPressed: () {
                 print("点赞");
               },
             )
@@ -179,22 +196,22 @@ class AboutRoute extends StatelessWidget {
       ),
       body: Center(
           child: Column(children: <Widget>[
-        Image.asset('assets/images/1.png'),
+            Image.asset('assets/images/1.png'),
             Text.rich(TextSpan(
                 children: [
                   TextSpan(
                       text: "Home: "
                   ),
                   TextSpan(
-                      text: "https://flutterchina.club",
-                      style: TextStyle(
-                          color: Colors.blue
-                      ),
+                    text: "https://flutterchina.club",
+                    style: TextStyle(
+                        color: Colors.blue
+                    ),
 //                      recognizer: _tapRecognizer
                   ),
                 ]
             ))
-      ])),
+          ])),
     );
   }
 }
@@ -206,9 +223,9 @@ class LoginRoute extends StatelessWidget {
     return Scaffold(
       body: Center(
           child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(wordPair.toString()),
-      )),
+            padding: const EdgeInsets.all(8.0),
+            child: Text(wordPair.toString()),
+          )),
     );
   }
 }
@@ -222,7 +239,10 @@ class NewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var msg = ModalRoute.of(context).settings.arguments;
+    var msg = ModalRoute
+        .of(context)
+        .settings
+        .arguments;
     return Scaffold(
         appBar: AppBar(
           title: Text("pass parameters"),
@@ -236,13 +256,14 @@ class NewRoute extends StatelessWidget {
                   'assets/images/2.jpeg',
                 ),
                 Text(
-                 msg,
+                  msg,
                   style: TextStyle(
                       color: Colors.blue,
                       fontSize: 18.0,
                       height: 1.2,
                       fontFamily: "Courier",
-                      background: new Paint()..color = Colors.yellow,
+                      background: new Paint()
+                        ..color = Colors.yellow,
                       decoration: TextDecoration.underline,
                       decorationStyle: TextDecorationStyle.dashed),
                 ),
