@@ -1,3 +1,4 @@
+import 'package:ctl/flex_demo.dart';
 import 'package:ctl/row_col_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         });
       },
       routes: {
+        "flex_demo": (context) => FlexDemo(),
         "row_col": (context) => RowColWidget(),
         "about": (context) => AboutRoute(),
 //        "login":(context)=>LoginRoute(),
@@ -177,6 +179,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             FlatButton.icon(icon: Icon(Icons.print), label: Text("RowCol Demo"), onPressed: () {
               Navigator.pushNamed(context, "row_col");
+            }),FlatButton.icon(icon: Icon(Icons.access_alarm), label: Text("Flex Demo"), onPressed: () {
+              Navigator.pushNamed(context, "flex_demo");
             }),
             IconButton(
               icon: Icon(Icons.thumb_up),
