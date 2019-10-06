@@ -1,4 +1,4 @@
-import 'package:english_words/english_words.dart';
+import 'package:ctl/row_col_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         });
       },
       routes: {
+        "row_col": (context) => RowColWidget(),
         "about": (context) => AboutRoute(),
 //        "login":(context)=>LoginRoute(),
         "newpage": (context) {
@@ -174,6 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("$result");
               },
             ),
+            FlatButton.icon(icon: Icon(Icons.print), label: Text("RowCol Demo"), onPressed: () {
+              Navigator.pushNamed(context, "row_col");
+            }),
             IconButton(
               icon: Icon(Icons.thumb_up),
               onPressed: () {
@@ -221,10 +225,11 @@ class LoginRoute extends StatelessWidget {
   @override
   void initState() {
     //监听输入改变
-    _unameController.addListener((){
+    _unameController.addListener(() {
       print(_unameController.text);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -283,7 +288,31 @@ class NewRoute extends StatelessWidget {
           padding: EdgeInsets.all(18),
           child: Center(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕
+              mainAxisAlignment: MainAxisAlignment.center, //垂直方向居中对齐
               children: <Widget>[
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
+                Image.asset(
+                  'assets/images/2.jpeg',
+                ),
                 Image.asset(
                   'assets/images/2.jpeg',
                 ),
