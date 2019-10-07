@@ -1,4 +1,5 @@
 import 'package:ctl/flex_demo.dart';
+import 'package:ctl/list_view_demo.dart';
 import 'package:ctl/main_layout.dart';
 import 'package:ctl/row_col_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         });
       },
       routes: {
+        "list_view_demo": (context) => ListViewDemo(),
         "main_layout": (context) => MainLayout(),
         "flex_demo": (context) => FlexDemo(),
         "row_col": (context) => RowColWidget(),
@@ -202,6 +204,11 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.thumb_up),
               onPressed: () {
                 Navigator.pushNamed(context, "main_layout");
+              },
+            ),IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                Navigator.pushNamed(context, "list_view_demo");
               },
             ),
           ],
