@@ -1,4 +1,5 @@
 import 'package:ctl/flex_demo.dart';
+import 'package:ctl/grid_view_demo.dart';
 import 'package:ctl/list_view_demo.dart';
 import 'package:ctl/main_layout.dart';
 import 'package:ctl/row_col_widget.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         });
       },
       routes: {
+        "grid_view_demo": (context) => GridViewDemo(),
         "list_view_demo": (context) => ListViewDemo(),
         "main_layout": (context) => MainLayout(),
         "flex_demo": (context) => FlexDemo(),
@@ -209,6 +211,11 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.list),
               onPressed: () {
                 Navigator.pushNamed(context, "list_view_demo");
+              },
+            ),IconButton(
+              icon: Icon(Icons.grid_off),
+              onPressed: () {
+                Navigator.pushNamed(context, "grid_view_demo");
               },
             ),
           ],
