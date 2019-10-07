@@ -14,7 +14,7 @@ class ListViewDemo extends StatelessWidget {
 class ListView1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
+    return Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisSize:MainAxisSize.min,children: <Widget>[
       ListTile(title: Text("商品列表")),
       Expanded(
           child: ListView.builder(
