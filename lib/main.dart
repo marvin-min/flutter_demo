@@ -373,27 +373,6 @@ class NewRoute extends StatelessWidget {
                 Image.asset(
                   'assets/images/2.jpeg',
                 ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
-                Image.asset(
-                  'assets/images/2.jpeg',
-                ),
                 Text(
                   msg,
                   style: TextStyle(
@@ -414,6 +393,21 @@ class NewRoute extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), title:Text("Home")),
+            BottomNavigationBarItem(icon: Icon(Icons.business), title:Text("News")),
+            BottomNavigationBarItem(icon: Icon(Icons.question_answer), title:Text("About")),
+          ],
+          fixedColor: Colors.cyan,
+          onTap: _onItemTapped,
+        ),
+    );
+  }
+  void _onItemTapped(int index) {
+    print(index);
   }
 }
+
+
