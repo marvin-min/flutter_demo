@@ -1,4 +1,5 @@
 import 'package:ctl/flex_demo.dart';
+import 'package:ctl/main_layout.dart';
 import 'package:ctl/row_col_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         });
       },
       routes: {
+        "main_layout": (context) => MainLayout(),
         "flex_demo": (context) => FlexDemo(),
         "row_col": (context) => RowColWidget(),
         "about": (context) => AboutRoute(),
@@ -199,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IconButton(
               icon: Icon(Icons.thumb_up),
               onPressed: () {
-                print("点赞");
+                Navigator.pushNamed(context, "main_layout");
               },
             ),
           ],
