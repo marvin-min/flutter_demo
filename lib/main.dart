@@ -317,7 +317,28 @@ class LoginRoute extends StatelessWidget {
                 backgroundColor: Colors.grey[200],
                 valueColor: AlwaysStoppedAnimation(Colors.blue),
                 value: .5,
-              )
+              ),
+              Container(
+                margin: EdgeInsets.only(top:50,left:50),
+                constraints: BoxConstraints.tightFor(width: 200,height: 150),
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    colors: [Colors.red,Colors.orange],
+                    center: Alignment.topLeft,
+                    radius: .98
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black54,
+                      offset: Offset(2.0,2.0),
+                      blurRadius: 4.0
+                    )
+                  ]
+                ),
+                transform: Matrix4.rotationZ(.2), //卡片倾斜变换
+                alignment: Alignment.center, //卡片内文字居中
+                child: Text("登陆", style: TextStyle(color: Colors.white,fontSize: 40.0),),
+              ),
             ],
           )),
     );
