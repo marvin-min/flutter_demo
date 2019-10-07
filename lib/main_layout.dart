@@ -43,19 +43,26 @@ class _MainLayoutState extends State<MainLayout>
               child: Text(e, textScaleFactor: 5),
             );
           }).toList()),
-      bottomNavigationBar: BottomNavigationBar(
-        // 底部导航
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.business), title: Text('Business')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.school), title: Text('School')),
-        ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
-      )
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          children: <Widget>[
+            IconButton(icon: Icon(Icons.home), onPressed: null),
+            IconButton(icon: Icon(Icons.business), onPressed: null),
+            SizedBox(),
+            IconButton(icon: Icon(Icons.question_answer), onPressed: null),
+            IconButton(icon: Icon(Icons.shop), onPressed: null),
+          ],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton( //悬浮按钮
+          child: Icon(Icons.thumb_up),
+          backgroundColor: Colors.blue,
+          onPressed:_onAdd
+      ),
     );
   }
 
