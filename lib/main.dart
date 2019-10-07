@@ -1,6 +1,7 @@
 import 'package:ctl/flex_demo.dart';
 import 'package:ctl/row_col_widget.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 void main() => runApp(MyApp());
 
@@ -36,7 +37,10 @@ class MyApp extends StatelessWidget {
         "about": (context) => AboutRoute(),
 //        "login":(context)=>LoginRoute(),
         "newpage": (context) {
-          return NewRoute(msg: ModalRoute.of(context).settings.arguments);
+          return NewRoute(msg: ModalRoute
+              .of(context)
+              .settings
+              .arguments);
         },
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'),
       },
@@ -127,7 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .display1,
             ),
             OutlineButton.icon(
               icon: Icon(Icons.send),
@@ -177,11 +184,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("$result");
               },
             ),
-            FlatButton.icon(icon: Icon(Icons.print), label: Text("RowCol Demo"), onPressed: () {
-              Navigator.pushNamed(context, "row_col");
-            }),FlatButton.icon(icon: Icon(Icons.access_alarm), label: Text("Flex Demo"), onPressed: () {
-              Navigator.pushNamed(context, "flex_demo");
-            }),
+            FlatButton.icon(
+                icon: Icon(Icons.print),
+                label: Text("RowCol Demo"),
+                onPressed: () {
+                  Navigator.pushNamed(context, "row_col");
+                }),
+            FlatButton.icon(
+                icon: Icon(Icons.access_alarm),
+                label: Text("Flex Demo"),
+                onPressed: () {
+                  Navigator.pushNamed(context, "flex_demo");
+                }),
             IconButton(
               icon: Icon(Icons.thumb_up),
               onPressed: () {
@@ -209,16 +223,52 @@ class AboutRoute extends StatelessWidget {
       ),
       body: Center(
           child: Column(children: <Widget>[
-        Image.asset('assets/images/1.png'),
-        Text.rich(TextSpan(children: [
-          TextSpan(text: "Home: "),
-          TextSpan(
-            text: "https://flutterchina.club",
-            style: TextStyle(color: Colors.blue),
+            Container(
+              color: Colors.black,
+              margin: EdgeInsets.all(60),
+              child: new Transform(
+                alignment: Alignment.topRight, //相对于坐标系原点的对齐方式
+                transform: new Matrix4.skewY(0.3), //沿Y轴倾斜0.3弧度
+                child: new Container(
+                  padding: const EdgeInsets.all(10.0),
+                  color: Colors.deepOrange,
+                  child: const Text('我们是共产主义接班人'),
+                ),
+              ),
+            ),
+            Image.asset('assets/images/1.png'),
+            DecoratedBox(
+              decoration: BoxDecoration(color: Colors.red),
+              child: Transform.translate(
+                offset: Offset(-10, -6),
+                child: Text("test Transform"),
+              ),
+            ),
+            Text.rich(TextSpan(children: [
+              TextSpan(text: "Home: "),
+              TextSpan(
+                text: "https://flutterchina.club",
+                style: TextStyle(color: Colors.blue),
 //                      recognizer: _tapRecognizer
-          ),
-        ]))
-      ])),
+              ),
+            ])),
+            DecoratedBox(
+              decoration: BoxDecoration(color: Colors.blueGrey),
+              child: Transform.rotate(
+                angle: math.pi / 2,
+                child: Text(" -*- " * 10),
+              ),
+            ),
+            DecoratedBox(
+              decoration: BoxDecoration(color: Colors.red),
+              //将Transform.rotate换成RotatedBox
+              child: RotatedBox(
+                quarterTurns: 1, //旋转90度(1/4圈)
+                child: Text("Hello world"),
+              ),
+            ),
+            Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0),)
+          ])),
     );
   }
 }
@@ -242,34 +292,34 @@ class LoginRoute extends StatelessWidget {
       ),
       body: Center(
           child: Column(
-        children: <Widget>[
-          TextField(
-            autofocus: true,
-            controller: _unameController, //设置contr
-            onChanged: (v) {
+            children: <Widget>[
+              TextField(
+                autofocus: true,
+                controller: _unameController, //设置contr
+                onChanged: (v) {
 //              print("onChange: $v");
-            },
+                },
 
-            decoration: InputDecoration(
-              labelText: "用户名",
-              hintText: "用户名或邮箱",
-              prefixIcon: Icon(Icons.person),
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-                labelText: "密码",
-                hintText: "您的登录密码",
-                prefixIcon: Icon(Icons.lock)),
-            obscureText: true,
-          ),
-          LinearProgressIndicator(
-            backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation(Colors.blue),
-            value: .5,
-          )
-        ],
-      )),
+                decoration: InputDecoration(
+                  labelText: "用户名",
+                  hintText: "用户名或邮箱",
+                  prefixIcon: Icon(Icons.person),
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "密码",
+                    hintText: "您的登录密码",
+                    prefixIcon: Icon(Icons.lock)),
+                obscureText: true,
+              ),
+              LinearProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: AlwaysStoppedAnimation(Colors.blue),
+                value: .5,
+              )
+            ],
+          )),
     );
   }
 }
@@ -283,7 +333,10 @@ class NewRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var msg = ModalRoute.of(context).settings.arguments;
+    var msg = ModalRoute
+        .of(context)
+        .settings
+        .arguments;
     return Scaffold(
         appBar: AppBar(
           title: Text("pass parameters"),
@@ -327,7 +380,8 @@ class NewRoute extends StatelessWidget {
                       fontSize: 18.0,
                       height: 1.2,
                       fontFamily: "Courier",
-                      background: new Paint()..color = Colors.yellow,
+                      background: new Paint()
+                        ..color = Colors.yellow,
                       decoration: TextDecoration.underline,
                       decorationStyle: TextDecorationStyle.dashed),
                 ),
