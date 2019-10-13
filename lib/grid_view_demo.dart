@@ -6,7 +6,7 @@ class GridViewDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: GridView2(),
+      body: GridView3(),
     );
   }
 }
@@ -88,5 +88,26 @@ class GridView2 extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class GridView3 extends StatelessWidget {
+  List<Widget> _getWidgets() {
+    var tmpList = new List<Widget>();
+    for (var i = 1; i < 8; i++) {
+      tmpList.add(Padding(
+          padding: EdgeInsets.all(10),
+          child: Image.network(
+            "https://www.itying.com/images/flutter/$i.png",
+            fit: BoxFit.cover,
+          )));
+    }
+    return tmpList;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+        crossAxisCount: 2, children: _getWidgets(), childAspectRatio: 1.7);
   }
 }
