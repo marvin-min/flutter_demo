@@ -226,6 +226,20 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("首页")
+          ), BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text("文章")
+          ),BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text("设置")
+          ),
+        ],
+      ),
     );
   }
 }
@@ -309,6 +323,21 @@ class LoginRoute extends StatelessWidget {
       body: Center(
           child: Column(
             children: <Widget>[
+              Wrap(spacing: 10,
+               runSpacing: 20,
+               children: <Widget>[
+                 Text("111111",style: TextStyle(fontSize: 20,color: Colors.red),),
+                 Text("111111111111111111",style: TextStyle(fontSize: 10,color: Colors.red),),
+                 Text("111111211",style: TextStyle(fontSize: 15,color: Colors.red),),
+                 Text("33333",style: TextStyle(fontSize: 16,color: Colors.red),),
+                 Text("3",style: TextStyle(fontSize: 28,color: Colors.red),),
+                 Text("44444444"),
+                 Text("4"),
+                 Text("5555555555555555"),
+                 Text("5555555555555"),
+                 Text("8888888888"),
+               ],
+              ),
               TextField(
                 autofocus: true,
                 controller: _unameController, //设置contr
@@ -357,6 +386,7 @@ class LoginRoute extends StatelessWidget {
               ),
             ],
           )),
+
     );
   }
 }
@@ -425,5 +455,6 @@ class NewRoute extends StatelessWidget {
     print(index);
   }
 }
+
 
 
