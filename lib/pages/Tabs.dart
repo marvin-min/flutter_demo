@@ -20,6 +20,9 @@ class _TabsState extends State<Tabs> {
       body: this._pageList[this._currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        iconSize: 28,
+        fixedColor:Colors.red,
+        type: BottomNavigationBarType.fixed,
         onTap: (int index){
           setState(() {
             _currentIndex = index;
