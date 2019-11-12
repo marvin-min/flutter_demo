@@ -2,6 +2,7 @@ import 'package:ctl/pages/tabs/Home.dart';
 import 'package:ctl/pages/tabs/News.dart';
 import 'package:ctl/pages/tabs/Settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_umplus/flutter_umplus.dart';
 
 class Tabs extends StatefulWidget {
   @override
@@ -24,6 +25,7 @@ class _TabsState extends State<Tabs> {
         fixedColor:Colors.red,
         type: BottomNavigationBarType.fixed,
         onTap: (int index){
+          FlutterUmplus.event('incrementCounter', label: 'select tab');
           setState(() {
             _currentIndex = index;
           });

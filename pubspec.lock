@@ -43,6 +43,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.5"
+  flare_dart:
+    dependency: transitive
+    description:
+      name: flare_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.4"
+  flare_flutter:
+    dependency: transitive
+    description:
+      name: flare_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.1"
+  flare_loading:
+    dependency: transitive
+    description:
+      name: flare_loading
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
+  flare_splash_screen:
+    dependency: "direct main"
+    description:
+      name: flare_splash_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -53,6 +81,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_umplus:
+    dependency: "direct main"
+    description:
+      name: flutter_umplus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
@@ -100,6 +135,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.5"
+  splashscreen:
+    dependency: "direct main"
+    description:
+      name: splashscreen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   stack_trace:
     dependency: transitive
     description:
@@ -135,6 +177,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.5"
+  timer_builder:
+    dependency: "direct main"
+    description:
+      name: timer_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.0"
   typed_data:
     dependency: transitive
     description:
@@ -151,3 +200,4 @@ packages:
     version: "2.0.8"
 sdks:
   dart: ">=2.2.2 <3.0.0"
+  flutter: ">=1.7.8+hotfix.3 <2.0.0"
