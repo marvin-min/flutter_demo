@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -9,42 +10,43 @@ void main() {
 
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  var content;
   @override
-  Widget build(BuildContext context) {
-    return new SplashScreen(
-        seconds: 14,
-        navigateAfterSeconds: new AfterSplash(),
-//        title: new Text(
-//          'Welcome In SplashScreen',
-//          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-//        ),
-        image: new Image.network(
-            'http://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Outdoors/LPF/November+17/Alpaca+T-Shirt.jpg'),
-        backgroundColor: Colors.white,
-//        styleTextUnderTheLoader: new TextStyle(),
-//        photoSize: 100.0,
-//        onClick: () => print("Flutter Egypt"),
-//        loaderColor: Colors.red
-    );
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.setState((){
+      content = 'Loading ...';
+    });
+    _getHttp().then((val){
+      print(val);
+      this.setState((){
+        content = val.toString();
+      });
+    });
   }
-}
 
-class AfterSplash extends StatelessWidget {
+   Future _getHttp() async {
+    try {
+      Response response = await Dio().get('http://a3pi.active.com/v2/search');
+      var data = response.data;
+      print(data);
+      return data;
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-          title: new Text("Welcome In SplashScreen Package"),
-          automaticallyImplyLeading: false),
-      body: Row(
-        children: <Widget>[
-          Image(fit: BoxFit.scaleDown, image:NetworkImage('http://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Outdoors/LPF/November+17/Alpaca+T-Shirt.jpg')),
-
-        ],
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(title: Text("测试DIO",)),
+        body: Text(content.toString()??'你好啊'),
       ),
     );
   }
