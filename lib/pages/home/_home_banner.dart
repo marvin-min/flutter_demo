@@ -1,22 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class HomeBannerWidget extends StatelessWidget {
   final List swipeDataList = [
     {
-      "image": "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/Articles/Boost+Your+Immune+System/immune+system+foods-front.jpg",
-      "url": "https://www.active.com/fitness/articles/how-to-boost-your-immune-system-for-the-winter",
-      "title": "How to Boost Your Immune System for the Winter?"
+      "image": "https://www.active.com/asset_pipeline/teasers/browse-running-31b0296970bdf010fe2fb0565b230c81.jpg",
+      "url": "https://www.active.com/running",
+      "title": "Running"
     },
     {
-      "image": "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/Articles/Best+Gifts+for+Fitness+Buffs/front.png",
-      "url": "https://www.active.com/fitness/articles/the-best-gifts-for-fitness-buffs",
-      "title": "The Best Gifts for Fitness Buffs"
+      "image": "https://www.active.com/asset_pipeline/teasers/browse-kids-family-626d603de9b7535e4a87ccf5817d2009.jpg",
+      "url": "https://www.activekids.com",
+      "title": "Kids & Family"
     },
     {
-      "image": "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Running/Articles/Best+Stocking+Stuffers+for+Runners/front.png",
-      "url": "https://www.active.com/running/articles/the-best-stocking-stuffers-for-runners",
-      "title": "The Best Stocking Stuffers for Runners."
+      "image": "https://www.active.com/asset_pipeline/teasers/browse-cycling-5e5f803fed0a9c7443ec229956348110.jpg",
+      "url": "https://www.active.com/cycling",
+      "title": "Cycling"
+    },
+    {
+      "image": "https://www.active.com/asset_pipeline/teasers/browse-outdoors-4608b400b57b65906c0b3cd19fb2e8f5.jpg",
+      "url": "https://www.active.com/outdoors",
+      "title": "Outdoors"
     }
   ];
 
@@ -25,8 +33,9 @@ class HomeBannerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 333,
-      width: 750,
+      padding: EdgeInsets.only(top:  ScreenUtil().setWidth(52)),
+      width: ScreenUtil().setWidth(750),
+      height: ScreenUtil().setHeight(350),
       child: new Swiper(
           itemBuilder: (BuildContext context, int index) {
             return new Image.network(
@@ -36,6 +45,7 @@ class HomeBannerWidget extends StatelessWidget {
           },
           itemCount: swipeDataList.length,
           pagination: new SwiperPagination(),
+          autoplay: true,
           onTap: (int index) {
             print(swipeDataList[index]["url"]);
           }),
