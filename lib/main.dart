@@ -1,3 +1,4 @@
+import 'package:ctl/pages/home/_home_banner.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
     return Container(
       child: Scaffold(
         appBar: AppBar(title: Text("测试DIO",)),
-        body: Text(content.toString()??'你好啊'),
+        body: HomeBannerWidget() ,
       ),
     );
   }

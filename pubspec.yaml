@@ -29,6 +29,7 @@ dependencies:
   flare_splash_screen: ^3.0.0
   splashscreen: ^1.2.0
   dio: ^3.0.5
+  flutter_swiper : ^1.1.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
